@@ -16,7 +16,7 @@
 #   CLOUDANT_PASSWORD
 #   CLOUDANT_DATABASE
 
-package:
+packages:
     $PACKAGE_NAME:
       namespace: _
       dependencies:
