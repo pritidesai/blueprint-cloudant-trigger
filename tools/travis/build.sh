@@ -4,6 +4,7 @@
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../../.."
 WHISKDIR="$ROOTDIR/openwhisk"
+DEPLOYDIR="$ROOTDIR/packageDeploy"
 
 cd $WHISKDIR
 
@@ -13,7 +14,7 @@ tools/build/scanCode.py $ROOTDIR
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit 0; fi
 
 cd $WHISKDIR/ansible
-s
+
 ANSIBLE_CMD="ansible-playbook -i environments/local"
 
 $ANSIBLE_CMD setup.yml
@@ -26,6 +27,7 @@ cd $WHISKDIR
 ./gradlew distDocker
 
 cd $WHISKDIR/ansible
+
 
 $ANSIBLE_CMD wipe.yml
 $ANSIBLE_CMD openwhisk.yml
@@ -47,8 +49,8 @@ EDGE_HOST=$(grep '^edge.host=' $WHISKPROPS_FILE | cut -d'=' -f2)
 export OPENWHISK_HOME=$WHISKDIR
 
 # Install the package
-source $ROOTDIR/packages/installCatalog.sh $AUTH_KEY $EDGE_HOST $WSK_CLI
+ source $DEPLOYDIR/packages/installCatalog.sh $AUTH_KEY $EDGE_HOST $WSK_CLI
 
 # Test
-cd $ROOTDIR
+cd $ROOTDIR/blueprint-cloudant-trigger
 ./gradlew :tests:test
