@@ -24,10 +24,8 @@ import org.scalatest.junit.JUnitRunner
 import common.{TestHelpers, Wsk, WskProps, WskTestHelpers}
 import java.io._
 
-//import com.fasterxml.jackson.annotation.JsonValue
 import spray.json.DefaultJsonProtocol.StringJsonFormat
 import spray.json.pimpAny
-import spray.json._
 
 @RunWith(classOf[JUnitRunner])
 class CloudantTests extends TestHelpers
