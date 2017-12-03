@@ -41,7 +41,7 @@ class CloudantTests extends TestHelpers
     val pythonfolder = "../runtimes/python/actions";
     val swiftfolder = "../runtimes/swift/actions";
 
-    behavior of "Hello World Blueprint"
+    behavior of "Cloudant Trigger Blueprint"
 
     /**
      * Test the node "cloudant trigger" blueprint
