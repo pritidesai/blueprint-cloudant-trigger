@@ -4,10 +4,10 @@ function main(params) {
     console.log(params.name);
     console.log(params.color);
 
-    if (!params.name) {
+    if (!params.name || !params.color) {
       console.error('name parameter not set.');
       reject({
-        'error': 'name parameter not set.'
+        'error': 'Please make sure name and color are passed in as params.'
       });
       return;
     } else {
