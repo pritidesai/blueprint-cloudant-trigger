@@ -40,13 +40,13 @@ class CloudantTests extends TestHelpers
     val phpfolder = "../runtimes/php/actions";
     val pythonfolder = "../runtimes/python/actions";
     val swiftfolder = "../runtimes/swift/actions";
-
     behavior of "Cloudant Trigger Blueprint"
 
     /**
      * Test the node "cloudant trigger" blueprint
      */
      it should "invoke process-change.js and get the result" in withAssetCleaner(wskprops) { (wp, assetHelper) =>
+       println(System.getProperty("user.dir"));
 
        val name = "cloudantNode"
        val file = Some(new File(nodejsfolder, "process-change.js").toString());
@@ -71,7 +71,9 @@ class CloudantTests extends TestHelpers
       }
 
       withActivation(wsk.activation, wsk.action.invoke(name)) {
-        _.response.result.get.toString should include("Please make sure name and color are passed in as params.")
+        activation =>
+          activation.response.success shouldBe false
+          activation.response.result.get.toString should include("Please make sure name and color are passed in as params.")
       }
     }
 
@@ -102,7 +104,9 @@ class CloudantTests extends TestHelpers
     }
 
     withActivation(wsk.activation, wsk.action.invoke(name)) {
-      _.response.result.get.toString should include("Please make sure name and color are passed in as params.")
+      activation =>
+        activation.response.success shouldBe false
+        activation.response.result.get.toString should include("Please make sure name and color are passed in as params.")
     }
   }
 
@@ -133,7 +137,9 @@ class CloudantTests extends TestHelpers
     }
 
     withActivation(wsk.activation, wsk.action.invoke(name)) {
-      _.response.result.get.toString should include("Please make sure name and color are passed in as params.")
+      activation =>
+        activation.response.success shouldBe false
+        activation.response.result.get.toString should include("Please make sure name and color are passed in as params.")
     }
   }
 
@@ -164,7 +170,9 @@ class CloudantTests extends TestHelpers
     }
 
     withActivation(wsk.activation, wsk.action.invoke(name)) {
-      _.response.result.get.toString should include("Please make sure name and color are passed in as params.")
+      activation =>
+        activation.response.success shouldBe false
+        activation.response.result.get.toString should include("Please make sure name and color are passed in as params.")
     }
   }
 }
