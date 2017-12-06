@@ -1,13 +1,9 @@
 function main(params) {
 
   return new Promise(function(resolve, reject) {
-    console.log(params.name);
-    console.log(params.color);
-
-    if (!params.name) {
-      console.error('name parameter not set.');
+    if (!params.name || !params.color) {
       reject({
-        'error': 'name parameter not set.'
+        'error': 'Please make sure name and color are passed in as params.'
       });
       return;
     } else {
@@ -18,7 +14,5 @@ function main(params) {
       });
       return;
     }
-
   });
-
 }

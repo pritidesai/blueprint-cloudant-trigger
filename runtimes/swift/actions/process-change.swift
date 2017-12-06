@@ -6,6 +6,6 @@ func main(args: [String:Any]) -> [String:Any] {
       print(message)
       return [ "change": message ]
     } else {
-      return [ "error": "Please make sure to pass color and name into params" ]
+      return [ "error": "Please make sure name and color are passed in as params." ]
     }
 }
