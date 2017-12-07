@@ -36,14 +36,14 @@ class CloudantTests extends TestHelpers
     val wsk = new Wsk()
 
     //set parameters for deploy tests
-    val nodejsfolder = "../runtimes/node/actions";
+    val nodejsfolder = "../runtimes/nodejs/actions";
     val phpfolder = "../runtimes/php/actions";
     val pythonfolder = "../runtimes/python/actions";
     val swiftfolder = "../runtimes/swift/actions";
     behavior of "Cloudant Trigger Blueprint"
 
     /**
-     * Test the node "cloudant trigger" blueprint
+     * Test the nodejs "cloudant trigger" blueprint
      */
      it should "invoke process-change.js and get the result" in withAssetCleaner(wskprops) { (wp, assetHelper) =>
        println(System.getProperty("user.dir"));

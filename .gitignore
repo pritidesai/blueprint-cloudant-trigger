@@ -6,4 +6,5 @@
 .gradle
 
 # IntelliJ
-*.iml 
+*.iml
+*.idea
